@@ -34,6 +34,8 @@ namespace ExemploBanco.Login
 
         #region Métodos
 
+        HashCode hc = new HashCode();
+
         public void Cadastrar()
         {
             HasError = false;

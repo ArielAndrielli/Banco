@@ -45,6 +45,7 @@ namespace ExemploBanco.Login
             this.txtConfSenha.TabIndex = 3;
             this.txtConfSenha.Text = "Confirmar Senha";
             this.txtConfSenha.Click += new System.EventHandler(this.txtConfSenha_Click);
+            this.txtConfSenha.Enter += new System.EventHandler(this.txtConfSenha_Enter);
             this.txtConfSenha.Leave += new System.EventHandler(this.txtConfSenha_Leave);
             // 
             // btnLogin
@@ -67,6 +68,7 @@ namespace ExemploBanco.Login
             this.txtSenha.TabIndex = 2;
             this.txtSenha.Text = "Senha";
             this.txtSenha.Click += new System.EventHandler(this.txtSenha_Click);
+            this.txtSenha.Enter += new System.EventHandler(this.txtSenha_Enter);
             this.txtSenha.Leave += new System.EventHandler(this.txtSenha_Leave);
             // 
             // txtUsuario
@@ -78,6 +80,7 @@ namespace ExemploBanco.Login
             this.txtUsuario.TabIndex = 1;
             this.txtUsuario.Text = "Usuário";
             this.txtUsuario.Click += new System.EventHandler(this.txtUsuario_Click);
+            this.txtUsuario.Enter += new System.EventHandler(this.txtUsuario_Enter);
             this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
             // 
             // label1

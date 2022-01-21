@@ -26,6 +26,7 @@ namespace ExemploBanco.Login
         #region Atributos
 
         private Log_in oCadastro = new Log_in();
+        HashCode hc = new HashCode();
 
         #endregion
 
@@ -59,7 +60,7 @@ namespace ExemploBanco.Login
             #region Operação
 
             oCadastro.Nome = txtUsuario.Text.Trim();
-            oCadastro.Senha = txtSenha.Text.Trim();
+            oCadastro.Senha = hc.PassHash(txtSenha.Text.Trim());
             oCadastro.Cadastrar();
 
             if (oCadastro.HasError)
@@ -163,5 +164,47 @@ namespace ExemploBanco.Login
         }
 
         #endregion
+
+        private void txtUsuario_Enter(object sender, EventArgs e)
+        {
+            txtUsuario.ForeColor = Color.Black;
+
+            if (txtUsuario.Text == "Usuário")
+            {
+                txtUsuario.Text = string.Empty;
+            }
+            else
+            {
+                txtUsuario.Text = txtUsuario.Text;
+            }
+        }
+
+        private void txtSenha_Enter(object sender, EventArgs e)
+        {
+            if (txtSenha.Text == "Senha")
+            {
+                txtSenha.Text = string.Empty;
+            }
+            else
+            {
+                txtSenha.Text = txtSenha.Text;
+            }
+            txtSenha.ForeColor = Color.Black;
+            txtSenha.PasswordChar = '*';
+        }
+
+        private void txtConfSenha_Enter(object sender, EventArgs e)
+        {
+            if (txtConfSenha.Text == "Confirmar Senha")
+            {
+                txtConfSenha.Text = string.Empty;
+            }
+            else
+            {
+                txtConfSenha.Text = txtConfSenha.Text;
+            }
+            txtConfSenha.ForeColor = Color.Black;
+            txtConfSenha.PasswordChar = '*';
+        }
     }
 }

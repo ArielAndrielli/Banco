@@ -1,13 +1,6 @@
 ﻿using Banco;
-using ExemploBanco.Login;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExemploBanco.Login
@@ -25,6 +18,7 @@ namespace ExemploBanco.Login
 
         #region Atributos
 
+        HashCode hs = new HashCode();
         private Log_in oLogin = new Log_in();
 
         #endregion

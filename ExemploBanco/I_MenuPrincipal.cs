@@ -1,20 +1,14 @@
 ﻿using Banco;
-using ExemploBanco;
 using ExemploBanco.Login;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace ExemploBanco
 {
     public partial class I_MenuPrincipal : Form
     {
+
         #region Construtor
 
         public I_MenuPrincipal(DadosLogin dadosLogin)
@@ -51,7 +45,11 @@ namespace ExemploBanco
             lblMeuId.Text = dadosLogin.id_login.ToString();
 
             lblPessoa.Text = Convert.ToString(oprc.MostrarNome(dadosLogin.id_login));
+
+            lblSaldo.Text = string.Format(CultureInfo.CreateSpecificCulture("pt-br"), "0:F2", int.Parse(lblSaldo.Text));
+
             AtualizarSaldo();
+
         }
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
