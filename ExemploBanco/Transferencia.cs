@@ -34,11 +34,14 @@ namespace ExemploBanco
 
         public void AtualizarSaldo()
         {
-            lblSaldo.Text = Convert.ToString(op.MostrarSaldo(dadosLogin.id_login));
+            double saldoSaque = op.MostrarSaldo(dadosLogin.id_login); //verifica se aqui volta um double, se não voltar, faz o convert double
+
+            lblSaldo.Text = saldoSaque.ToString("N2"); //isso vai formatar pra ficar com 2 casas decimais e com pontuação
         }
 
         #endregion
 
+        #region Eventos
 
         private void Transferencia_Load(object sender, EventArgs e)
         {
@@ -54,6 +57,14 @@ namespace ExemploBanco
             if (txtIdOutraConta.Text == string.Empty && txtTransferencia.Text == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios!");
+                return;
+            }
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtTransferencia.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Valor Inválido!");
+                txtTransferencia.Text = txtTransferencia.Text.Remove(txtTransferencia.Text.Length - 1);
+                txtTransferencia.Text = string.Empty;
                 return;
             }
 
@@ -125,6 +136,14 @@ namespace ExemploBanco
                 return;
             }
 
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtIdOutraConta.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Valor Inválido!");
+                txtIdOutraConta.Text = txtIdOutraConta.Text.Remove(txtIdOutraConta.Text.Length - 1);
+                txtIdOutraConta.Text = string.Empty;
+                return;
+            }
+
             int id = int.Parse(txtIdOutraConta.Text);
 
             if (op.HasError)
@@ -140,5 +159,7 @@ namespace ExemploBanco
 
             ///////////////////////////////////////////////
         }
+
+        #endregion
     }
 }

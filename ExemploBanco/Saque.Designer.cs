@@ -68,17 +68,17 @@ namespace ExemploBanco
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(57, 142);
+            this.label1.Location = new System.Drawing.Point(29, 142);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 22);
+            this.label1.Size = new System.Drawing.Size(153, 22);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Seu saldo atual:";
+            this.label1.Text = "Seu saldo atual: R$ ";
             // 
             // lblSaldo
             // 
             this.lblSaldo.AutoSize = true;
             this.lblSaldo.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldo.Location = new System.Drawing.Point(185, 142);
+            this.lblSaldo.Location = new System.Drawing.Point(173, 142);
             this.lblSaldo.Name = "lblSaldo";
             this.lblSaldo.Size = new System.Drawing.Size(30, 22);
             this.lblSaldo.TabIndex = 3;

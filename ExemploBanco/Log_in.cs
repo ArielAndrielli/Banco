@@ -99,7 +99,7 @@ namespace ExemploBanco.Login
                 {
                     Id = dataReader.IsDBNull(0) ? 0 : dataReader.GetInt32(0);
 
-                    //Estrutura do if ternário
+                    //Estrutura do if ternário acima
                     //if (dataReader.IsDBNull(0))
                     //{
                     //    Id = 0;

@@ -221,5 +221,17 @@
   <ItemGroup>
     <None Include="Resources\icons8-desligar-501.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-64 %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

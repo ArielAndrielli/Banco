@@ -68,7 +68,7 @@ namespace ExemploBanco
             // 
             this.lblSaldo.AutoSize = true;
             this.lblSaldo.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldo.Location = new System.Drawing.Point(190, 137);
+            this.lblSaldo.Location = new System.Drawing.Point(158, 137);
             this.lblSaldo.Name = "lblSaldo";
             this.lblSaldo.Size = new System.Drawing.Size(30, 22);
             this.lblSaldo.TabIndex = 4;
@@ -78,7 +78,7 @@ namespace ExemploBanco
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(62, 137);
+            this.label1.Location = new System.Drawing.Point(30, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 22);
             this.label1.TabIndex = 3;

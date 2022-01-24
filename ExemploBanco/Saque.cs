@@ -36,7 +36,9 @@ namespace ExemploBanco
 
         public void AtualizarSaldo()
         {
-            lblSaldo.Text = Convert.ToString(op.MostrarSaldo(dadosLogin.id_login));
+            double saldoSaque = op.MostrarSaldo(dadosLogin.id_login); //verifica se aqui volta um double, se não voltar, faz o convert double
+
+            lblSaldo.Text =  saldoSaque.ToString("N2"); //isso vai formatar pra ficar com 2 casas decimais e com pontuação
         }
 
         private void Saque_Load(object sender, EventArgs e)
@@ -51,6 +53,14 @@ namespace ExemploBanco
             if (txtSaque.Text == string.Empty)
             {
                 MessageBox.Show("Campo Obrigatório!");
+                return;
+            }
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtSaque.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Valor Inválido!");
+                txtSaque.Text = txtSaque.Text.Remove(txtSaque.Text.Length - 1);
+                txtSaque.Text = string.Empty;
                 return;
             }
 
@@ -96,7 +106,5 @@ namespace ExemploBanco
 
 
         #endregion
-
-
     }
 }
