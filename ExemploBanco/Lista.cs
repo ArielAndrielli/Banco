@@ -1,33 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Banco;
 using System.Windows.Forms;
 
 namespace ExemploBanco
 {
     public partial class Lista : Form
     {
-        Transferencia tr = new Transferencia();
+
+        #region Construtor
 
         public Lista()
         {
             InitializeComponent();
         }
 
+        #endregion
+
+        Transferencia tr = new Transferencia(dadosLogin);
+
         private void dgv_Clientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dgv_Clientes.Rows[e.RowIndex];
-                txtIdOutraConta.Text = row.Cells[0].Value.ToString();
-                lblPessoaDeDestino.Text = row.Cells[1].Value.ToString();
+                Transferencia.txtIdOutraConta.Text = row.Cells[0].Value.ToString();
+                Transferencia.lblPessoaDeDestino.Text = row.Cells[1].Value.ToString();
             }
-
         }
     }
 }

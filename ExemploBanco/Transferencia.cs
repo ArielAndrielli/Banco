@@ -13,12 +13,17 @@ namespace ExemploBanco
 {
     public partial class Transferencia : Form
     {
+
         #region Construtor
         public Transferencia(DadosLogin dadosLogin)
         {
             InitializeComponent();
 
             this.dadosLogin = dadosLogin;
+        }
+
+        public Transferencia()
+        {
         }
 
         #endregion
@@ -87,8 +92,6 @@ namespace ExemploBanco
             }
 
             op.id_dest = int.Parse(txtIdOutraConta.Text);
-
-            
 
             if (op.saldo <= double.Parse(lblSaldo.Text))
             {
@@ -160,6 +163,14 @@ namespace ExemploBanco
             ///////////////////////////////////////////////
         }
 
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            Lista lista = new Lista();
+            lista.ShowDialog();
+            AtualizarSaldo();
+        }
+
         #endregion
+
     }
 }

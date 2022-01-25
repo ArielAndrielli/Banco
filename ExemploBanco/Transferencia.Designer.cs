@@ -36,7 +36,7 @@ namespace ExemploBanco
             this.lblSaldo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPessoaDeDestino = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPesquisa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTransferencia
@@ -105,21 +105,22 @@ namespace ExemploBanco
             this.lblPessoaDeDestino.TabIndex = 1;
             this.lblPessoaDeDestino.Text = ". . .";
             // 
-            // button1
+            // btnPesquisa
             // 
-            this.button1.Image = global::ExemploBanco.Properties.Resources.icons8_search_20;
-            this.button1.Location = new System.Drawing.Point(7, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPesquisa.Image = global::ExemploBanco.Properties.Resources.icons8_search_20;
+            this.btnPesquisa.Location = new System.Drawing.Point(7, 104);
+            this.btnPesquisa.Name = "btnPesquisa";
+            this.btnPesquisa.Size = new System.Drawing.Size(30, 30);
+            this.btnPesquisa.TabIndex = 2;
+            this.btnPesquisa.UseVisualStyleBackColor = true;
+            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
             // 
             // Transferencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(308, 261);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPesquisa);
             this.Controls.Add(this.lblPessoaDeDestino);
             this.Controls.Add(this.lblSaldo);
             this.Controls.Add(this.label1);
@@ -146,6 +147,6 @@ namespace ExemploBanco
         private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPessoaDeDestino;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPesquisa;
     }
 }

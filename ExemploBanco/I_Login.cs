@@ -41,14 +41,11 @@ namespace ExemploBanco.Login
                 //As duas linhas abaixo mostram o form do menu principal
                 I_MenuPrincipal menu = new I_MenuPrincipal(dadosLogin);
                 menu.ShowDialog();
-
-
             }
             else
             {
                 Negativo ngtv = new Negativo();
                 ngtv.ShowDialog();
-
                 return;
             }
         }
@@ -224,9 +221,7 @@ namespace ExemploBanco.Login
             Logar();
         }
 
-
         #endregion
-
 
     }
 }

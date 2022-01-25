@@ -1,12 +1,5 @@
-﻿using ExemploBanco.Login;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExemploBanco.Login
@@ -163,8 +156,6 @@ namespace ExemploBanco.Login
 
         }
 
-        #endregion
-
         private void txtUsuario_Enter(object sender, EventArgs e)
         {
             txtUsuario.ForeColor = Color.Black;
@@ -206,5 +197,8 @@ namespace ExemploBanco.Login
             txtConfSenha.ForeColor = Color.Black;
             txtConfSenha.PasswordChar = '*';
         }
+
+        #endregion
+
     }
 }

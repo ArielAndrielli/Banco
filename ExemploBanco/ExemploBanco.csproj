@@ -115,6 +115,12 @@
     <Compile Include="I_MenuPrincipal.Designer.cs">
       <DependentUpon>I_MenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lista.Designer.cs">
+      <DependentUpon>Lista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Log_in.cs" />
     <Compile Include="Negativo.cs">
       <SubType>Form</SubType>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="I_MenuPrincipal.resx">
       <DependentUpon>I_MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lista.resx">
+      <DependentUpon>Lista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negativo.resx">
       <DependentUpon>Negativo.cs</DependentUpon>
