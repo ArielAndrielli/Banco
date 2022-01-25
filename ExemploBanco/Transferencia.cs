@@ -167,6 +167,9 @@ namespace ExemploBanco
         {
             Lista lista = new Lista();
             lista.ShowDialog();
+            lblPessoaDeDestino.Text = lista.userEscolhido2;
+            txtIdOutraConta.Text = lista.userEscolhido;
+            // pegar o valor escolhido
             AtualizarSaldo();
         }
 

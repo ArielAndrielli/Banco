@@ -30,33 +30,18 @@ namespace ExemploBanco
         private void InitializeComponent()
         {
             this.dgv_Clientes = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Clientes)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_Clientes
             // 
             this.dgv_Clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Clientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Nome});
             this.dgv_Clientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Clientes.Location = new System.Drawing.Point(0, 0);
             this.dgv_Clientes.Name = "dgv_Clientes";
             this.dgv_Clientes.Size = new System.Drawing.Size(244, 399);
             this.dgv_Clientes.TabIndex = 0;
             this.dgv_Clientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Clientes_CellClick);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // Nome
-            // 
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
             // 
             // Lista
             // 
@@ -66,6 +51,7 @@ namespace ExemploBanco
             this.Controls.Add(this.dgv_Clientes);
             this.Name = "Lista";
             this.Text = "Lista";
+            this.Load += new System.EventHandler(this.Lista_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Clientes)).EndInit();
             this.ResumeLayout(false);
 
@@ -74,7 +60,5 @@ namespace ExemploBanco
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_Clientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
     }
 }

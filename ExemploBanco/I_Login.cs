@@ -27,7 +27,10 @@ namespace ExemploBanco.Login
 
         private void Logar()
         {
-            bool existeCadastro = oLogin.VerificarCadastro(txtUsuario.Text.Trim(), txtSenha.Text.Trim());
+            HashCode hc = new HashCode();
+            string passwordhashed=hc.PassHash(txtSenha.Text.Trim());
+
+            bool existeCadastro = oLogin.VerificarCadastro(txtUsuario.Text.Trim(), passwordhashed);
 
             if (existeCadastro)
             {
