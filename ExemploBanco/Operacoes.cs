@@ -1,10 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExemploBanco
 {
@@ -22,21 +17,23 @@ namespace ExemploBanco
 
         public string MsgError { get; set; } = string.Empty;
 
-        public int id { get; set; } = 0;
+        public int id_conta{ get; set; } = 0;
 
-        public int id_dest { get; set; } = 0;
+        public string aux_conta { get; set; } = string.Empty;
 
-        public string nome { get; set; } = string.Empty;
+        public string tipo { get; set; } = string.Empty;
 
-        public double saldo { get; set; } = 0;
+        public double valor { get; set; } = 0;
 
-        public double saque { get; set; } = 0;
+        public double aux_valor { get; set; } = 0;
+
+        public DateTime data_mov { get; set; }
 
         #endregion
 
         #region Métodos
 
-        public void Sacar()
+        public void DepSac()
         {
             HasError = false;
             MsgError = string.Empty;
@@ -50,10 +47,17 @@ namespace ExemploBanco
                 connection.Open();
 
                 command = connection.CreateCommand();
-                command.CommandText = "UPDATE tbconta SET saldo = (saldo - @valorSacado) WHERE id_conta = @id ;";
+                command.CommandText = @"
 
-                command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-                command.Parameters.Add("@valorSacado", MySqlDbType.Double).Value = saldo;
+                    select Id_conta 
+                  , sum(if (Tipo = 'D' or tipo = 'E', Valor,-Valor)) as cSumSaldo  
+                    from tbconta 
+                    where Data_mov = (@dt1) 
+                    group by Id_conta 
+                    order by Id_conta 
+                    ;";
+
+                command.Parameters.Add("@dt1", MySqlDbType.DateTime).Value = data_mov;
 
                 command.ExecuteNonQuery();
             }
@@ -72,7 +76,7 @@ namespace ExemploBanco
             }
         }
 
-        public void Depositar()
+        /*public void Depositar()
         {
             HasError = false;
             MsgError = string.Empty;
@@ -107,7 +111,7 @@ namespace ExemploBanco
                 if (command != null)
                     command.Dispose();
             }
-        }
+        }*/
 
         public void Transferir()
         {
@@ -123,12 +127,17 @@ namespace ExemploBanco
                 connection.Open();
 
                 command = connection.CreateCommand();
-                command.CommandText = "UPDATE tbconta SET saldo = (saldo - @valorTransferido) WHERE id_conta = @id_remetente;";
-                command.CommandText += "UPDATE tbconta SET saldo = (saldo + @valorTransferido) WHERE id_conta = @id_destinatario;";
+                command.CommandText = @"
+                
+                select Id_conta 
+              , sum(if (tipo = 'D' or tipo = 'E', valor,-valor)) as cSumSaldo  
+                from tbconta 
+                where Data_mov = (@dt1) 
+                group by Id_conta 
+                order by Id_conta 
+                ";
 
-                command.Parameters.Add("@id_remetente", MySqlDbType.Int32).Value = id;
-                command.Parameters.Add("@id_destinatario", MySqlDbType.Int32).Value = id_dest;
-                command.Parameters.Add("@valorTransferido", MySqlDbType.Double).Value = saldo;
+                command.Parameters.Add("@dt1", MySqlDbType.DateTime);
 
                 command.ExecuteNonQuery();
             }
@@ -170,11 +179,11 @@ namespace ExemploBanco
                 {
                     int i = 0;
 
-                    nome = dataReader.IsDBNull(i) ? string.Empty : dataReader.GetString(i);
+                    aux_conta = dataReader.IsDBNull(i) ? string.Empty : dataReader.GetString(i);
                 }
                 else
                 {
-                    nome = string.Empty;
+                    aux_conta = string.Empty;
                 }
 
             }
@@ -191,7 +200,7 @@ namespace ExemploBanco
                 if (command != null)
                     command.Dispose();
             }
-            return nome;
+            return aux_conta;
         }
 
         public double MostrarSaldo(int id)
@@ -209,7 +218,7 @@ namespace ExemploBanco
                 connection.Open();
 
                 command = connection.CreateCommand();
-                command.CommandText = "SELECT saldo FROM tbconta WHERE id_conta = @id;";
+                command.CommandText = "SELECT saldo FROM tbconta WHERE Id_conta = @id;";
 
                 command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
 
@@ -218,11 +227,11 @@ namespace ExemploBanco
                 {
                     int i = 0;
 
-                    saldo = dataReader.IsDBNull(i) ? 0 : dataReader.GetDouble(i);
+                    valor = dataReader.IsDBNull(i) ? 0 : dataReader.GetDouble(i);
                 }
                 else
                 {
-                    saldo = 0;
+                    valor = 0;
                 }
 
             }
@@ -239,7 +248,7 @@ namespace ExemploBanco
                 if (command != null)
                     command.Dispose();
             }
-            return saldo;
+            return valor;
         }
 
         public void Selecionar(int pId)
@@ -266,11 +275,11 @@ namespace ExemploBanco
                 {
                     int i = 0;
 
-                    nome = dataReader.IsDBNull(i) ? string.Empty : dataReader.GetString(i); i++;
+                    aux_conta = dataReader.IsDBNull(i) ? string.Empty : dataReader.GetString(i); i++;
                 }
                 else
                 {
-                    nome = string.Empty;
+                    aux_conta = string.Empty;
                 }
             }
             catch (Exception ex)

@@ -27,7 +27,7 @@ namespace ExemploBanco
         #region Eventos
         public void AtualizarSaldo()
         {
-            double saldo = op.MostrarSaldo(dadosLogin.id_login); //verifica se aqui volta um double, se não voltar, faz o convert double
+            double saldo = op.MostrarSaldo(dadosLogin.id_login); //verifica se aqui volta um double
 
             lblSaldo.Text = "R$ " + saldo.ToString("N2"); //isso vai formatar pra ficar com 2 casas decimais e com pontuação
         }
@@ -39,7 +39,7 @@ namespace ExemploBanco
 
         private void btnDepositar_Click(object sender, EventArgs e)
         {
-            op.id = dadosLogin.id_login;
+            op.id_conta = dadosLogin.id_login;
 
             if (textBox1.Text == string.Empty)
             {
@@ -47,6 +47,7 @@ namespace ExemploBanco
                 return;
             }
 
+            //Pedir Explicação!!!
             if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
             {
                 MessageBox.Show("Valor Inválido!");
@@ -55,16 +56,16 @@ namespace ExemploBanco
                 return;
             }
 
-            op.saldo = double.Parse(textBox1.Text.Trim());
+            op.valor = double.Parse(textBox1.Text.Trim());
 
-            if (op.saldo < 1)
+            if (op.valor < 1)
             {
                 MessageBox.Show("Valor Inválido!");
                 return;
             }
             else
             {
-            op.Depositar();
+            op.DepSac();
             }
 
             if (op.HasError)

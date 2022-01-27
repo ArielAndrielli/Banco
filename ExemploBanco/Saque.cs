@@ -48,7 +48,7 @@ namespace ExemploBanco
 
         private void btnSacar_Click(object sender, EventArgs e)
         {
-            op.id = dadosLogin.id_login;
+            op.id_conta = dadosLogin.id_login;
 
             if (txtSaque.Text == string.Empty)
             {
@@ -64,18 +64,18 @@ namespace ExemploBanco
                 return;
             }
 
-            op.saldo = double.Parse(txtSaque.Text.Trim());
+            op.valor = double.Parse(txtSaque.Text.Trim());
 
-            if (op.saldo < 0 || op.saldo > double.Parse(lblSaldo.Text))
+            if (op.valor < 0 || op.valor > double.Parse(lblSaldo.Text))
             {
                 MessageBox.Show("Saldo Insuficiente!");
                 return;
             }
 
 
-            if (op.saldo > 0 || op.saldo <= double.Parse(txtSaque.Text))
+            if (op.valor > 0 || op.valor <= double.Parse(txtSaque.Text))
             {
-                op.Sacar();
+                op.DepSac();
             }
 
 

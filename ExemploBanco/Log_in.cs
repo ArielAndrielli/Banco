@@ -19,6 +19,8 @@ namespace ExemploBanco.Login
 
         private const string connectionString = "Server=localhost;User=root;Password=sql$user;Database=dbteste;";
 
+        HashCode hc = new HashCode();
+
         #endregion
 
         #region Propriedades
@@ -34,7 +36,6 @@ namespace ExemploBanco.Login
 
         #region Métodos
 
-        HashCode hc = new HashCode();
 
         public void Cadastrar()
         {
@@ -54,6 +55,7 @@ namespace ExemploBanco.Login
 
                 command.Parameters.Add("@Nome", MySqlDbType.String).Value = Nome;
                 command.Parameters.Add("@Senha", MySqlDbType.String).Value = Senha;
+
 
                 command.ExecuteNonQuery();
             }

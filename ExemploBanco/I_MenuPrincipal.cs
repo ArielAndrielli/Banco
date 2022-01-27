@@ -3,6 +3,7 @@ using ExemploBanco.Login;
 using System;
 using System.Windows.Forms;
 using System.Globalization;
+using MySql.Data.MySqlClient;
 
 namespace ExemploBanco
 {
@@ -29,11 +30,6 @@ namespace ExemploBanco
 
         #region Métodos
 
-
-        #endregion
-
-        #region Eventos
-
         public void AtualizarSaldo()
         {
             //Minha solução: lblSaldo.Text = string.Format(CultureInfo.CreateSpecificCulture("pt-br"), "0:F2", double.Parse(lblSaldo.Text));
@@ -43,6 +39,10 @@ namespace ExemploBanco
             lblSaldo.Text = "R$ " + saldo.ToString("N2"); //isso vai formatar pra ficar com 2 casas decimais e com pontuação
 
         }
+
+        #endregion
+
+        #region Eventos
 
         public void I_MenuPrincipal_Load(object sender, EventArgs e)
         {
@@ -87,7 +87,7 @@ namespace ExemploBanco
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            DialogResult dg = MessageBox.Show("Tem certeza de que deseja fazer Logout?", "Aviso", 
+            DialogResult dg = MessageBox.Show("Tem certeza de que deseja fazer Logout?", "Aviso",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dg == DialogResult.Yes)
             {
@@ -110,22 +110,22 @@ namespace ExemploBanco
 
         private void pcb2_Click(object sender, EventArgs e)
         {
-            Deposito deposito = new Deposito(dadosLogin);
-            deposito.ShowDialog();
-            AtualizarSaldo();
+             Deposito deposito = new Deposito(dadosLogin);
+             deposito.ShowDialog();
+             AtualizarSaldo();
         }
 
         private void pcb1_Click(object sender, EventArgs e)
-        {
-            Saque saque = new Saque(dadosLogin);
-            saque.ShowDialog();
-            AtualizarSaldo();
-        }
+            {
+                Saque saque = new Saque(dadosLogin);
+                saque.ShowDialog();
+                AtualizarSaldo();
+            }
 
         private void btnSairMesmo_Click(object sender, EventArgs e)
-        {
-              DialogResult dg = MessageBox.Show("Tem certeza de que deseja sair?", "Aviso",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            {
+                DialogResult dg = MessageBox.Show("Tem certeza de que deseja sair?", "Aviso",
+                      MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dg == DialogResult.Yes)
                 {
                     Application.Exit();
@@ -134,9 +134,9 @@ namespace ExemploBanco
                 {
                     return;
                 }
-        }
-
+            }
+        
         #endregion
 
     }
-}
+} 

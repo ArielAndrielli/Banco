@@ -55,9 +55,9 @@ namespace ExemploBanco
 
         private void btnTransferir_Click(object sender, EventArgs e)
         {
-            op.id = dadosLogin.id_login;
+            op.id_conta = dadosLogin.id_login;
             double.TryParse(txtTransferencia.Text.Trim(), out double saldo);
-            op.saldo = saldo;
+            op.valor = saldo;
 
             if (txtIdOutraConta.Text == string.Empty && txtTransferencia.Text == string.Empty)
             {
@@ -73,7 +73,7 @@ namespace ExemploBanco
                 return;
             }
 
-            if (op.saldo < 1)
+            if (op.valor < 1)
             {
                 MessageBox.Show("Valor Inválido!");
                 return;
@@ -91,9 +91,9 @@ namespace ExemploBanco
                 return;
             }
 
-            op.id_dest = int.Parse(txtIdOutraConta.Text);
+            //op.id_dest = int.Parse(txtIdOutraConta.Text);
 
-            if (op.saldo <= double.Parse(lblSaldo.Text))
+            if (op.valor <= double.Parse(lblSaldo.Text))
             {
                 op.Transferir();
             }
