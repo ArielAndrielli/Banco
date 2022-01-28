@@ -75,7 +75,7 @@ namespace ExemploBanco
 
             if (op.valor > 0 || op.valor <= double.Parse(txtSaque.Text))
             {
-                op.DepSac();
+                op.S();
             }
 
 

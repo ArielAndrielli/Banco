@@ -33,7 +33,7 @@ namespace ExemploBanco
 
         #region Métodos
 
-        public void DepSac()
+        public void Extrato()
         {
             HasError = false;
             MsgError = string.Empty;
@@ -49,12 +49,12 @@ namespace ExemploBanco
                 command = connection.CreateCommand();
                 command.CommandText = @"
 
-                    select Id_conta 
-                  , sum(if (Tipo = 'D' or tipo = 'E', Valor,-Valor)) as cSumSaldo  
-                    from tbconta 
-                    where Data_mov = (@dt1) 
-                    group by Id_conta 
-                    order by Id_conta 
+                    SELECT Id_conta,
+                    SUM(if (Tipo = 'D' or tipo = 'E', Valor,-Valor)) AS cSumSaldo 
+                    FROM tbconta 
+                    WHERE Data_mov = (@dt1) 
+                    GROUP BY Id_conta 
+                    ORDER BY Id_conta 
                     ;";
 
                 command.Parameters.Add("@dt1", MySqlDbType.DateTime).Value = data_mov;
@@ -76,7 +76,7 @@ namespace ExemploBanco
             }
         }
 
-        /*public void Depositar()
+        public void D()
         {
             HasError = false;
             MsgError = string.Empty;
@@ -90,11 +90,15 @@ namespace ExemploBanco
                 connection.Open();
 
                 command = connection.CreateCommand();
-                command.CommandText = "UPDATE tbconta SET saldo = (saldo + @valorSacado) WHERE id_conta = @id ;" + 
-                    "INSERT IGNORE INTO tbconta (id_conta, saldo) VALUES (@id, @valorSacado);";
+                command.CommandText = @"INSERT INTO tbconta (Id_conta, Aux_conta, Tipo, Valor, Aux_valor, Data_mov)
+                                        VALUES(null, @aux_c, @tipo, @valor, @valor, @data);";
 
-                command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-                command.Parameters.Add("@valorSacado", MySqlDbType.Double).Value = saldo;
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_conta;
+                command.Parameters.Add("@aux_c", MySqlDbType.VarChar).Value = aux_conta;
+                command.Parameters.Add("@valor", MySqlDbType.Double).Value = valor;
+                command.Parameters.Add("@tipo", MySqlDbType.VarChar).Value = tipo = "D";
+                //command.Parameters.Add("@aux_valor", MySqlDbType.Double).Value = aux_valor;s
+                command.Parameters.Add("@data", MySqlDbType.DateTime).Value = data_mov = DateTime.Now;
 
                 command.ExecuteNonQuery();
             }
@@ -111,8 +115,51 @@ namespace ExemploBanco
                 if (command != null)
                     command.Dispose();
             }
-        }*/
+        }
 
+        public void S()
+        {
+            HasError = false;
+            MsgError = string.Empty;
+
+            MySqlConnection connection = null;
+            MySqlCommand command = null;
+
+            try
+            {
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+
+                command = connection.CreateCommand();
+                command.CommandText = @"INSERT INTO tbconta (Id_conta, Aux_conta, Tipo, Valor, Aux_valor, Data_mov) 
+                                        VALUES(null, @aux_c, @tipo, @valor, @valor, @data;";
+
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_conta;
+                command.Parameters.Add("@aux_c", MySqlDbType.VarChar).Value = aux_conta;
+                command.Parameters.Add("@valor", MySqlDbType.Double).Value = valor;
+                command.Parameters.Add("@tipo", MySqlDbType.VarChar).Value = tipo = "E";
+                //command.Parameters.Add("@aux_valor", MySqlDbType.Double).Value = aux_valor;s
+                command.Parameters.Add("@data", MySqlDbType.DateTime).Value = data_mov = DateTime.Now;
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                HasError = true;
+                MsgError = ex.Message;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Dispose();
+
+                if (command != null)
+                    command.Dispose();
+            }
+        }
+
+
+        //Arrumar Transferência
         public void Transferir()
         {
             HasError = false;
@@ -127,15 +174,7 @@ namespace ExemploBanco
                 connection.Open();
 
                 command = connection.CreateCommand();
-                command.CommandText = @"
-                
-                select Id_conta 
-              , sum(if (tipo = 'D' or tipo = 'E', valor,-valor)) as cSumSaldo  
-                from tbconta 
-                where Data_mov = (@dt1) 
-                group by Id_conta 
-                order by Id_conta 
-                ";
+                command.CommandText = @"";
 
                 command.Parameters.Add("@dt1", MySqlDbType.DateTime);
 

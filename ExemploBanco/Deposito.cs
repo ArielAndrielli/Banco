@@ -19,6 +19,8 @@ namespace ExemploBanco
 
         #region Atributos
 
+        private const string connectionString = "Server=localhost;User=root;Password=sql$user;Database=dbteste;";
+
         private DadosLogin dadosLogin = null;
         private Operacoes op = new Operacoes();
 
@@ -65,7 +67,7 @@ namespace ExemploBanco
             }
             else
             {
-            op.DepSac();
+                op.D();
             }
 
             if (op.HasError)

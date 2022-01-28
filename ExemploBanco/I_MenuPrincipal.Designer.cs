@@ -44,6 +44,7 @@ namespace ExemploBanco
             this.pcb3 = new System.Windows.Forms.PictureBox();
             this.pcb2 = new System.Windows.Forms.PictureBox();
             this.pcb1 = new System.Windows.Forms.PictureBox();
+            this.btnExtrato = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcb3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb1)).BeginInit();
@@ -98,40 +99,40 @@ namespace ExemploBanco
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(51, 168);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 25);
+            this.label1.Size = new System.Drawing.Size(130, 26);
             this.label1.TabIndex = 8;
             this.label1.Text = "Bem vindo(a):";
             // 
             // lblPessoa
             // 
             this.lblPessoa.AutoSize = true;
-            this.lblPessoa.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPessoa.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPessoa.Location = new System.Drawing.Point(182, 168);
             this.lblPessoa.Name = "lblPessoa";
-            this.lblPessoa.Size = new System.Drawing.Size(51, 25);
+            this.lblPessoa.Size = new System.Drawing.Size(37, 26);
             this.lblPessoa.TabIndex = 9;
             this.lblPessoa.Text = ". . .";
             // 
             // lblSaldo
             // 
             this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaldo.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSaldo.Location = new System.Drawing.Point(165, 214);
             this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(51, 25);
+            this.lblSaldo.Size = new System.Drawing.Size(37, 26);
             this.lblSaldo.TabIndex = 11;
             this.lblSaldo.Text = ". . .";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(51, 214);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 25);
+            this.label4.Size = new System.Drawing.Size(111, 26);
             this.label4.TabIndex = 10;
             this.label4.Text = "Saldo Atual:";
             // 
@@ -222,11 +223,23 @@ namespace ExemploBanco
             this.pcb1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             this.pcb1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
             // 
+            // btnExtrato
+            // 
+            this.btnExtrato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExtrato.Font = new System.Drawing.Font("Palatino Linotype", 14.25F);
+            this.btnExtrato.Location = new System.Drawing.Point(56, 568);
+            this.btnExtrato.Name = "btnExtrato";
+            this.btnExtrato.Size = new System.Drawing.Size(163, 36);
+            this.btnExtrato.TabIndex = 12;
+            this.btnExtrato.Text = "Verificar Extrato";
+            this.btnExtrato.UseVisualStyleBackColor = true;
+            // 
             // I_MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 629);
+            this.Controls.Add(this.btnExtrato);
             this.Controls.Add(this.btnSairMesmo);
             this.Controls.Add(this.lblMeuId);
             this.Controls.Add(this.label2);
@@ -273,5 +286,6 @@ namespace ExemploBanco
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblMeuId;
         private System.Windows.Forms.Button btnSairMesmo;
+        private System.Windows.Forms.Button btnExtrato;
     }
 }
