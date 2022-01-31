@@ -36,9 +36,9 @@ namespace ExemploBanco
 
         public void AtualizarSaldo()
         {
-            double saldoSaque = op.MostrarSaldo(dadosLogin.id_login); //verifica se aqui volta um double, se não voltar, faz o convert double
+            double saldoSaque = op.Extrato(dadosLogin.id_login); //verifica se aqui volta um double, se não voltar, faz o convert double
 
-            lblSaldo.Text =  saldoSaque.ToString("N2"); //isso vai formatar pra ficar com 2 casas decimais e com pontuação
+            lblSaldo.Text = saldoSaque.ToString("N2"); //isso vai formatar pra ficar com 2 casas decimais e com pontuação
         }
 
         private void Saque_Load(object sender, EventArgs e)

@@ -33,13 +33,14 @@ namespace ExemploBanco
 
         #region Métodos
 
-        public void Extrato()
+        public double Extrato(int id)
         {
             HasError = false;
             MsgError = string.Empty;
 
             MySqlConnection connection = null;
             MySqlCommand command = null;
+            MySqlDataReader dataReader;
 
             try
             {
@@ -52,15 +53,28 @@ namespace ExemploBanco
                     SELECT Id_conta,
                     SUM(if (Tipo = 'D' or tipo = 'E', Valor,-Valor)) AS cSumSaldo 
                     FROM tbconta 
-                    WHERE Data_mov = (@dt1) 
+                    WHERE Id_conta = @id 
                     GROUP BY Id_conta 
                     ORDER BY Id_conta 
                     ;";
 
-                command.Parameters.Add("@dt1", MySqlDbType.DateTime).Value = data_mov;
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_conta;
 
                 command.ExecuteNonQuery();
+                dataReader = command.ExecuteReader();
+                if (dataReader.Read())
+                {
+                    int i = 1;
+
+                    valor = dataReader.IsDBNull(i) ? 0 : dataReader.GetDouble(i);
+                }
+                else
+                {
+                    valor = 0;
+                }
+
             }
+
             catch (Exception ex)
             {
                 HasError = true;
@@ -74,6 +88,7 @@ namespace ExemploBanco
                 if (command != null)
                     command.Dispose();
             }
+            return valor;
         }
 
         public void D()
@@ -91,13 +106,13 @@ namespace ExemploBanco
 
                 command = connection.CreateCommand();
                 command.CommandText = @"INSERT INTO tbconta (Id_conta, Aux_conta, Tipo, Valor, Aux_valor, Data_mov)
-                                        VALUES(null, @aux_c, @tipo, @valor, @valor, @data);";
+                                        VALUES(@id, @aux_c, @tipo, @valor, @valor, @data);";
 
                 command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_conta;
-                command.Parameters.Add("@aux_c", MySqlDbType.VarChar).Value = aux_conta;
+                command.Parameters.Add("@aux_c", MySqlDbType.VarChar).Value = aux_conta = MostrarNome(id_conta);
                 command.Parameters.Add("@valor", MySqlDbType.Double).Value = valor;
                 command.Parameters.Add("@tipo", MySqlDbType.VarChar).Value = tipo = "D";
-                //command.Parameters.Add("@aux_valor", MySqlDbType.Double).Value = aux_valor;s
+                //command.Parameters.Add("@aux_valor", MySqlDbType.Double).Value = aux_valor;
                 command.Parameters.Add("@data", MySqlDbType.DateTime).Value = data_mov = DateTime.Now;
 
                 command.ExecuteNonQuery();

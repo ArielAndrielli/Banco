@@ -34,7 +34,7 @@ namespace ExemploBanco
         {
             //Minha solução: lblSaldo.Text = string.Format(CultureInfo.CreateSpecificCulture("pt-br"), "0:F2", double.Parse(lblSaldo.Text));
 
-            double saldo = oprc.MostrarSaldo(dadosLogin.id_login); //verifica se aqui volta um double, se não voltar, faz o convert double
+            double saldo = oprc.Extrato(dadosLogin.id_login); //verifica se aqui volta um double, se não voltar, faz o convert double
 
             lblSaldo.Text = "R$ " + saldo.ToString("N2"); //isso vai formatar pra ficar com 2 casas decimais e com pontuação
 
