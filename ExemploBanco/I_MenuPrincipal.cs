@@ -135,7 +135,13 @@ namespace ExemploBanco
                     return;
                 }
             }
-        
+
+        private void btnExtrato_Click(object sender, EventArgs e)
+        {
+            Extrato ext = new Extrato(dadosLogin);
+            ext.ShowDialog();
+        }
+
         #endregion
 
     }

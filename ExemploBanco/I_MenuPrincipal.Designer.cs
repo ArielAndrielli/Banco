@@ -233,6 +233,7 @@ namespace ExemploBanco
             this.btnExtrato.TabIndex = 12;
             this.btnExtrato.Text = "Verificar Extrato";
             this.btnExtrato.UseVisualStyleBackColor = true;
+            this.btnExtrato.Click += new System.EventHandler(this.btnExtrato_Click);
             // 
             // I_MenuPrincipal
             // 

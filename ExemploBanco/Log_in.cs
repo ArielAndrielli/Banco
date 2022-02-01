@@ -36,7 +36,6 @@ namespace ExemploBanco.Login
 
         #region Métodos
 
-
         public void Cadastrar()
         {
             HasError = false;

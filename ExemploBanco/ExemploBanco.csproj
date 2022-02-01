@@ -96,6 +96,12 @@
     <Compile Include="Deposito.Designer.cs">
       <DependentUpon>Deposito.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Extrato.Designer.cs">
+      <DependentUpon>Extrato.cs</DependentUpon>
+    </Compile>
     <Compile Include="HashCode.cs" />
     <Compile Include="I_Login.cs">
       <SubType>Form</SubType>
@@ -151,6 +157,9 @@
     </Compile>
     <EmbeddedResource Include="Deposito.resx">
       <DependentUpon>Deposito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Extrato.resx">
+      <DependentUpon>Extrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="I_Login.resx">
       <DependentUpon>I_Login.cs</DependentUpon>

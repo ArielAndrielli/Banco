@@ -77,3 +77,4 @@ C:\Users\aars\Documents\Curso C#\Clone\Exemplo-Banco\ExemploBanco\obj\Debug\Exem
 C:\Users\aars\Documents\Curso C#\Clone\Exemplo-Banco\ExemploBanco\obj\Debug\ExemploBanco.exe
 C:\Users\aars\Documents\Curso C#\Clone\Exemplo-Banco\ExemploBanco\obj\Debug\ExemploBanco.pdb
 C:\Users\aars\Documents\Curso C#\Clone\Exemplo-Banco\ExemploBanco\obj\Debug\ExemploBanco.Lista.resources
+C:\Users\aars\Documents\Curso C#\Clone\Exemplo-Banco\ExemploBanco\obj\Debug\ExemploBanco.Extrato.resources
