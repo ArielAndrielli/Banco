@@ -41,6 +41,5 @@ namespace ExemploBanco
 
         #endregion
 
-        
     }
 }

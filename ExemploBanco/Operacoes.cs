@@ -53,7 +53,7 @@ namespace ExemploBanco
                 command.CommandText = @"
 
                     SELECT Id_conta,
-                    SUM(if (Tipo = 'D' or tipo = 'E', Valor,-Valor)) AS cSumSaldo 
+                    SUM(if (Tipo = 'D' or tipo = 'S', Valor,-Valor)) AS cSumSaldo 
                     FROM tbconta 
                     WHERE Id_conta = @id 
                     GROUP BY Id_conta 
@@ -111,7 +111,7 @@ namespace ExemploBanco
                 command.CommandText = @"
 
                     SELECT
-                    SUM(if (Tipo = 'D' or tipo = 'E', Valor,-Valor)) AS cSumSaldo 
+                    SUM(if (Tipo = 'D' or tipo = 'S', Aux_valor,-Aux_valor)) AS cSumSaldo 
                     FROM tbconta 
                     WHERE Id_conta = @id 
                     GROUP BY Id_conta 
@@ -206,13 +206,14 @@ namespace ExemploBanco
                 connection.Open();
 
                 command = connection.CreateCommand();
-                command.CommandText = @"UPDATE tbconta SET saldo = (saldo - @valorSacado) WHERE id_conta = @id ;";
+                command.CommandText = @"INSERT INTO tbconta (Id_conta, Aux_conta, Tipo, Valor, Aux_valor, Data_mov)
+                                        VALUES(@id, @aux_c, @tipo, @aux_valor, -@aux_valor, @data);";
 
                 command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_conta;
                 command.Parameters.Add("@aux_c", MySqlDbType.VarChar).Value = aux_conta = MostrarNome(id_conta);
-                command.Parameters.Add("@valor", MySqlDbType.Double).Value = valor;
-                command.Parameters.Add("@tipo", MySqlDbType.VarChar).Value = tipo = "E";
-              //command.Parameters.Add("@aux_valor", MySqlDbType.Double).Value = aux_valor;
+                command.Parameters.Add("@valor", MySqlDbType.Double).Value = aux_valor;
+                command.Parameters.Add("@tipo", MySqlDbType.VarChar).Value = tipo = "S";
+                command.Parameters.Add("@aux_valor", MySqlDbType.Double).Value = aux_valor;
                 command.Parameters.Add("@data", MySqlDbType.DateTime).Value = data_mov = DateTime.Now;
 
                 command.ExecuteNonQuery();
