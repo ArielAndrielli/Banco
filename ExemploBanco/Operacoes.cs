@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Banco;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 
@@ -66,6 +67,64 @@ namespace ExemploBanco
                 if (dataReader.Read())
                 {
                     int i = 1;
+
+                    valor = dataReader.IsDBNull(i) ? 0 : dataReader.GetDouble(i);
+                }
+                else
+                {
+                    valor = 0;
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                HasError = true;
+                MsgError = ex.Message;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Dispose();
+
+                if (command != null)
+                    command.Dispose();
+            }
+            return valor;
+        }
+
+        public double Saldo(int id)
+        {
+            HasError = false;
+            MsgError = string.Empty;
+
+            MySqlConnection connection = null;
+            MySqlCommand command = null;
+            MySqlDataReader dataReader;
+
+            try
+            {
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+
+                command = connection.CreateCommand();
+                command.CommandText = @"
+
+                    SELECT
+                    SUM(if (Tipo = 'D' or tipo = 'E', Valor,-Valor)) AS cSumSaldo 
+                    FROM tbconta 
+                    WHERE Id_conta = @id 
+                    GROUP BY Id_conta 
+                    ORDER BY Id_conta 
+                    ;";
+
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
+                command.ExecuteNonQuery();
+                dataReader = command.ExecuteReader();
+                if (dataReader.Read())
+                {
+                    int i = 0;
 
                     valor = dataReader.IsDBNull(i) ? 0 : dataReader.GetDouble(i);
                 }
@@ -322,7 +381,7 @@ namespace ExemploBanco
                 connection.Open();
 
                 command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM tbconta WHERE Id_conta LIKE @Id ORDER BY Id;";
+                command.CommandText = "SELECT * FROM tbconta WHERE Id_conta = @Id ORDER BY Id;";
 
                 command.Parameters.Add("@Id", MySqlDbType.Int32).Value = pId;
 

@@ -34,7 +34,7 @@ namespace ExemploBanco
 
         private void Extrato_Load(object sender, EventArgs e)
         {
-            DataTable result = op.ListarExtrato(0);
+            DataTable result = op.ListarExtrato(dadosLogin.id_login);
 
             dgv_ExtratoLegal.DataSource = result;
         }
