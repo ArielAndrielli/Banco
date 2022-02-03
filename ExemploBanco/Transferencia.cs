@@ -39,7 +39,7 @@ namespace ExemploBanco
 
         public void AtualizarSaldo()
         {
-            double saldoSaque = op.MostrarSaldo(dadosLogin.id_login); //verifica se aqui volta um double, se não voltar, faz o convert double
+            double saldoSaque = op.Saldo(dadosLogin.id_login); //verifica se aqui volta um double, se não voltar, faz o convert double
 
             lblSaldo.Text = saldoSaque.ToString("N2"); //isso vai formatar pra ficar com 2 casas decimais e com pontuação
         }
@@ -55,9 +55,14 @@ namespace ExemploBanco
 
         private void btnTransferir_Click(object sender, EventArgs e)
         {
+
+            #region Debitando
+
             op.id_conta = dadosLogin.id_login;
             double.TryParse(txtTransferencia.Text.Trim(), out double saldo);
             op.valor = saldo;
+            op.tipo = "D";
+            op.desc = "Transferência";
 
             if (txtIdOutraConta.Text == string.Empty && txtTransferencia.Text == string.Empty)
             {
@@ -95,7 +100,36 @@ namespace ExemploBanco
 
             if (op.valor <= double.Parse(lblSaldo.Text))
             {
-                op.Transferir();
+                op.Incluir();
+            }
+            else if (Convert.ToDouble(txtTransferencia.Text) > double.Parse(lblSaldo.Text))
+            {
+                MessageBox.Show("Saldo Insuficiente!");
+                return;
+            }
+
+            if (op.HasError)
+            {
+                MessageBox.Show(op.MsgError, "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            #endregion
+
+            #region Creditando
+
+            op.id_conta = int.Parse(txtIdOutraConta.Text);
+            op.valor = saldo;
+            op.tipo = "C";
+            op.desc = "Transferência";
+
+            //op.id_dest = int.Parse(txtIdOutraConta.Text);
+
+            if (op.valor <= double.Parse(lblSaldo.Text))
+            {
+                op.Incluir();
             }
             else if (Convert.ToDouble(txtTransferencia.Text) > double.Parse(lblSaldo.Text))
             {
@@ -114,9 +148,9 @@ namespace ExemploBanco
             MessageBox.Show("Transferência realizada com sucesso!",
                 "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            DialogResult dg = MessageBox.Show("Deseja realizar outra transferência?", "Aviso",
+            DialogResult diag = MessageBox.Show("Deseja realizar outra transferência?", "Aviso",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dg == DialogResult.Yes)
+            if (diag == DialogResult.Yes)
             {
                 AtualizarSaldo();
                 txtIdOutraConta.Text = string.Empty;
@@ -127,6 +161,8 @@ namespace ExemploBanco
             {
                 this.Close();
             }
+
+            #endregion
         }
 
         private void txtIdOutraConta_TextChanged(object sender, EventArgs e)

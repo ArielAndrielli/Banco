@@ -49,6 +49,10 @@ namespace ExemploBanco
         private void btnSacar_Click(object sender, EventArgs e)
         {
             op.id_conta = dadosLogin.id_login;
+            double.TryParse(txtSaque.Text.Trim(), out double saldo);
+            op.valor = saldo;
+            op.tipo = "D";
+            op.desc = "Saque";
 
             if (txtSaque.Text == string.Empty)
             {
@@ -58,24 +62,23 @@ namespace ExemploBanco
 
             if (System.Text.RegularExpressions.Regex.IsMatch(txtSaque.Text, "[^0-9]"))
             {
-                MessageBox.Show("aux_valor Inválido!");
+                MessageBox.Show("Valor Inválido!");
                 txtSaque.Text = txtSaque.Text.Remove(txtSaque.Text.Length - 1);
                 txtSaque.Text = string.Empty;
                 return;
             }
 
-            op.aux_valor = double.Parse(txtSaque.Text.Trim());
 
-            if (op.aux_valor < 0 || op.aux_valor > double.Parse(lblSaldo.Text))
+            if (op.valor < 0 || op.valor > double.Parse(lblSaldo.Text))
             {
                 MessageBox.Show("Saldo Insuficiente!");
                 return;
             }
 
 
-            if (op.aux_valor > 0 || op.aux_valor <= double.Parse(txtSaque.Text))
+            if (op.valor > 0 || op.valor <= double.Parse(lblSaldo.Text))
             {
-                op.S();
+                op.Incluir();
             }
 
 

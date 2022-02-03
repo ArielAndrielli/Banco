@@ -27,6 +27,7 @@ namespace ExemploBanco
         #endregion
 
         #region Eventos
+
         public void AtualizarSaldo()
         {
             double saldo = op.Saldo(dadosLogin.id_login); //verifica se aqui volta um double
@@ -42,6 +43,8 @@ namespace ExemploBanco
         private void btnDepositar_Click(object sender, EventArgs e)
         {
             op.id_conta = dadosLogin.id_login;
+            op.tipo = "C";
+            op.desc = "Depósito";
 
             if (textBox1.Text == string.Empty)
             {
@@ -67,7 +70,7 @@ namespace ExemploBanco
             }
             else
             {
-                op.D();
+                op.Incluir();
             }
 
             if (op.HasError)

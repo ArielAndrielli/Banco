@@ -31,6 +31,8 @@ namespace ExemploBanco
 
         public DateTime data_mov { get; set; }
 
+        public string desc { get; set; }
+
         #endregion
 
         #region Métodos
@@ -53,7 +55,7 @@ namespace ExemploBanco
                 command.CommandText = @"
 
                     SELECT Id_conta,
-                    SUM(if (Tipo = 'D' or tipo = 'S', Valor,-Valor)) AS cSumSaldo 
+                    SUM(if (Tipo = 'C' or tipo = 'D', Valor,-Valor)) AS cSumSaldo 
                     FROM tbconta 
                     WHERE Id_conta = @id 
                     GROUP BY Id_conta 
@@ -111,7 +113,7 @@ namespace ExemploBanco
                 command.CommandText = @"
 
                     SELECT
-                    SUM(if (Tipo = 'D' or tipo = 'S', Aux_valor,-Aux_valor)) AS cSumSaldo 
+                    SUM(if (Tipo = 'C' or Tipo = 'D', Valor, -Valor)) AS cSumSaldo 
                     FROM tbconta 
                     WHERE Id_conta = @id 
                     GROUP BY Id_conta 
@@ -151,7 +153,7 @@ namespace ExemploBanco
             return valor;
         }
 
-        public void D()
+        public void Incluir()
         {
             HasError = false;
             MsgError = string.Empty;
@@ -165,56 +167,16 @@ namespace ExemploBanco
                 connection.Open();
 
                 command = connection.CreateCommand();
-                command.CommandText = @"INSERT INTO tbconta (Id_conta, Aux_conta, Tipo, Valor, Aux_valor, Data_mov)
-                                        VALUES(@id, @aux_c, @tipo, @valor, @valor, @data);";
+                command.CommandText = @"INSERT INTO tbconta (Id_conta, Tipo, Valor, Aux_valor, Data_mov, Descricao)
+                                        VALUES(@id, @tipo, @valor, @valor, @data, @desc);";
 
                 command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_conta;
-                command.Parameters.Add("@aux_c", MySqlDbType.VarChar).Value = aux_conta = MostrarNome(id_conta);
+              //command.Parameters.Add("@aux_c", MySqlDbType.VarChar).Value = aux_conta = MostrarNome(id_conta);
                 command.Parameters.Add("@valor", MySqlDbType.Double).Value = valor;
-                command.Parameters.Add("@tipo", MySqlDbType.VarChar).Value = tipo = "D";
-              //command.Parameters.Add("@aux_valor", MySqlDbType.Double).Value = aux_valor;
-                command.Parameters.Add("@data", MySqlDbType.DateTime).Value = data_mov = DateTime.Now;
-
-                command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                HasError = true;
-                MsgError = ex.Message;
-            }
-            finally
-            {
-                if (connection != null)
-                    connection.Dispose();
-
-                if (command != null)
-                    command.Dispose();
-            }
-        }
-
-        public void S()
-        {
-            HasError = false;
-            MsgError = string.Empty;
-
-            MySqlConnection connection = null;
-            MySqlCommand command = null;
-
-            try
-            {
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-
-                command = connection.CreateCommand();
-                command.CommandText = @"INSERT INTO tbconta (Id_conta, Aux_conta, Tipo, Valor, Aux_valor, Data_mov)
-                                        VALUES(@id, @aux_c, @tipo, @aux_valor, -@aux_valor, @data);";
-
-                command.Parameters.Add("@id", MySqlDbType.Int32).Value = id_conta;
-                command.Parameters.Add("@aux_c", MySqlDbType.VarChar).Value = aux_conta = MostrarNome(id_conta);
-                command.Parameters.Add("@valor", MySqlDbType.Double).Value = aux_valor;
-                command.Parameters.Add("@tipo", MySqlDbType.VarChar).Value = tipo = "S";
+                command.Parameters.Add("@tipo", MySqlDbType.VarChar).Value = tipo;
                 command.Parameters.Add("@aux_valor", MySqlDbType.Double).Value = aux_valor;
                 command.Parameters.Add("@data", MySqlDbType.DateTime).Value = data_mov = DateTime.Now;
+                command.Parameters.Add("@desc", MySqlDbType.VarChar).Value = desc;
 
                 command.ExecuteNonQuery();
             }
@@ -233,42 +195,6 @@ namespace ExemploBanco
             }
         }
 
-
-        //Arrumar Transferência
-        public void Transferir()
-        {
-            HasError = false;
-            MsgError = string.Empty;
-
-            MySqlConnection connection = null;
-            MySqlCommand command = null;
-
-            try
-            {
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-
-                command = connection.CreateCommand();
-                command.CommandText = @"";
-
-                command.Parameters.Add("@dt1", MySqlDbType.DateTime);
-
-                command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                HasError = true;
-                MsgError = ex.Message;
-            }
-            finally
-            {
-                if (connection != null)
-                    connection.Dispose();
-
-                if (command != null)
-                    command.Dispose();
-            }
-        }
 
         public string MostrarNome(int pId)
         {
@@ -382,7 +308,11 @@ namespace ExemploBanco
                 connection.Open();
 
                 command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM tbconta WHERE Id_conta = @Id ORDER BY Id;";
+                command.CommandText = @"SELECT tbconta.Id, tbconta.Id_conta, tblogin.Nome, tbconta.Tipo, 
+                                        tbconta.Valor, tbconta.Aux_valor, tbconta.Data_mov, tbconta.Descricao
+                                        FROM tbconta
+                                        INNER JOIN tblogin ON tblogin.Id = tbconta.Id_conta
+                                        WHERE tbconta.Id_conta = @Id;";
 
                 command.Parameters.Add("@Id", MySqlDbType.Int32).Value = pId;
 
