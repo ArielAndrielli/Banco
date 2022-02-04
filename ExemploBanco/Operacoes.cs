@@ -113,7 +113,7 @@ namespace ExemploBanco
                 command.CommandText = @"
 
                     SELECT
-                    SUM(if (Tipo = 'C' or Tipo = 'D', Valor, -Valor)) AS cSumSaldo 
+                    SUM(if (Tipo = 'C' , Valor, -Valor)) AS cSumSaldo 
                     FROM tbconta 
                     WHERE Id_conta = @id 
                     GROUP BY Id_conta 
