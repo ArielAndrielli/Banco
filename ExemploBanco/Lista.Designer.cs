@@ -29,6 +29,7 @@ namespace ExemploBanco
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lista));
             this.dgv_Clientes = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Clientes)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +50,7 @@ namespace ExemploBanco
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(244, 399);
             this.Controls.Add(this.dgv_Clientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Lista";
             this.Text = "Lista";
             this.Load += new System.EventHandler(this.Lista_Load);

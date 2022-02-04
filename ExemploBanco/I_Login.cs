@@ -61,12 +61,13 @@ namespace ExemploBanco.Login
         private void I_Login_Load(object sender, EventArgs e)
         {
             #region DebugCondition
-            /*
-#if DEBUG
-            txtUsuario.Text = "Alecrim";
-            txtSenha.Text = "123";
-#endif
-            */
+            
+            /*#if DEBUG
+
+            txtUsuario.Text = "Ariel";
+            txtSenha.Text = "arielandrielli";
+            #endif*/
+            
             #endregion
         }
 

@@ -29,6 +29,7 @@ namespace ExemploBanco.Login
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(I_Login));
             this.lblTextin = new System.Windows.Forms.Label();
             this.lblCadastro = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -118,6 +119,7 @@ namespace ExemploBanco.Login
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "I_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

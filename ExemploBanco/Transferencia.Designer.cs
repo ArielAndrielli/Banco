@@ -29,6 +29,7 @@ namespace ExemploBanco
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transferencia));
             this.txtTransferencia = new System.Windows.Forms.TextBox();
             this.lblSaque = new System.Windows.Forms.Label();
             this.btnTransferir = new System.Windows.Forms.Button();
@@ -128,6 +129,7 @@ namespace ExemploBanco
             this.Controls.Add(this.txtTransferencia);
             this.Controls.Add(this.lblSaque);
             this.Controls.Add(this.btnTransferir);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Transferencia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

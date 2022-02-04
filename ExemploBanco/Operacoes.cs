@@ -196,6 +196,50 @@ namespace ExemploBanco
         }
 
 
+        public bool MostrarId(int pIdId)
+        {
+            HasError = false;
+            MsgError = string.Empty;
+
+            MySqlConnection connection = null;
+            MySqlCommand command = null;
+            MySqlDataReader dataReader = null;
+
+            bool result = false;
+
+            try
+            {
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+
+                command = connection.CreateCommand();
+                command.CommandText = "SELECT Id FROM tblogin WHERE Id = @id;";
+
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = pIdId;
+
+                dataReader = command.ExecuteReader();
+                if (dataReader.Read())
+                {
+                    result = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                HasError = true;
+                MsgError = ex.Message;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Dispose();
+
+                if (command != null)
+                    command.Dispose();
+            }
+            return result;
+        }
+
         public string MostrarNome(int pId)
         {
             HasError = false;

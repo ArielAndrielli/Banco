@@ -29,6 +29,7 @@ namespace ExemploBanco
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Saque));
             this.txtSaque = new System.Windows.Forms.TextBox();
             this.lblSaque = new System.Windows.Forms.Label();
             this.btnSacar = new System.Windows.Forms.Button();
@@ -94,6 +95,7 @@ namespace ExemploBanco
             this.Controls.Add(this.txtSaque);
             this.Controls.Add(this.lblSaque);
             this.Controls.Add(this.btnSacar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Saque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

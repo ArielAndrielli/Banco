@@ -29,6 +29,7 @@ namespace ExemploBanco
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(I_MenuPrincipal));
             this.lblSaque = new System.Windows.Forms.Label();
             this.lblDeposito = new System.Windows.Forms.Label();
             this.lblTransferir = new System.Windows.Forms.Label();
@@ -55,7 +56,9 @@ namespace ExemploBanco
             this.lblSaque.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblSaque.AutoSize = true;
+            this.lblSaque.BackColor = System.Drawing.Color.Transparent;
             this.lblSaque.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaque.ForeColor = System.Drawing.Color.White;
             this.lblSaque.Location = new System.Drawing.Point(131, 450);
             this.lblSaque.Name = "lblSaque";
             this.lblSaque.Size = new System.Drawing.Size(69, 22);
@@ -66,7 +69,9 @@ namespace ExemploBanco
             // 
             this.lblDeposito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblDeposito.AutoSize = true;
+            this.lblDeposito.BackColor = System.Drawing.Color.Transparent;
             this.lblDeposito.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeposito.ForeColor = System.Drawing.Color.White;
             this.lblDeposito.Location = new System.Drawing.Point(501, 450);
             this.lblDeposito.Name = "lblDeposito";
             this.lblDeposito.Size = new System.Drawing.Size(99, 22);
@@ -78,7 +83,9 @@ namespace ExemploBanco
             this.lblTransferir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTransferir.AutoSize = true;
+            this.lblTransferir.BackColor = System.Drawing.Color.Transparent;
             this.lblTransferir.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransferir.ForeColor = System.Drawing.Color.White;
             this.lblTransferir.Location = new System.Drawing.Point(868, 450);
             this.lblTransferir.Name = "lblTransferir";
             this.lblTransferir.Size = new System.Drawing.Size(126, 22);
@@ -89,7 +96,9 @@ namespace ExemploBanco
             // 
             this.lblMM.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblMM.AutoSize = true;
+            this.lblMM.BackColor = System.Drawing.Color.Transparent;
             this.lblMM.Font = new System.Drawing.Font("Brush Script MT", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMM.ForeColor = System.Drawing.Color.White;
             this.lblMM.Location = new System.Drawing.Point(361, 58);
             this.lblMM.Name = "lblMM";
             this.lblMM.Size = new System.Drawing.Size(370, 79);
@@ -99,47 +108,57 @@ namespace ExemploBanco
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(51, 168);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 26);
+            this.label1.Size = new System.Drawing.Size(160, 32);
             this.label1.TabIndex = 8;
             this.label1.Text = "Bem vindo(a):";
             // 
             // lblPessoa
             // 
             this.lblPessoa.AutoSize = true;
-            this.lblPessoa.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPessoa.Location = new System.Drawing.Point(182, 168);
+            this.lblPessoa.BackColor = System.Drawing.Color.Transparent;
+            this.lblPessoa.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPessoa.ForeColor = System.Drawing.Color.White;
+            this.lblPessoa.Location = new System.Drawing.Point(202, 168);
             this.lblPessoa.Name = "lblPessoa";
-            this.lblPessoa.Size = new System.Drawing.Size(37, 26);
+            this.lblPessoa.Size = new System.Drawing.Size(45, 32);
             this.lblPessoa.TabIndex = 9;
             this.lblPessoa.Text = ". . .";
             // 
             // lblSaldo
             // 
             this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldo.Location = new System.Drawing.Point(165, 214);
+            this.lblSaldo.BackColor = System.Drawing.Color.Transparent;
+            this.lblSaldo.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaldo.ForeColor = System.Drawing.Color.White;
+            this.lblSaldo.Location = new System.Drawing.Point(185, 214);
             this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(37, 26);
+            this.lblSaldo.Size = new System.Drawing.Size(45, 32);
             this.lblSaldo.TabIndex = 11;
             this.lblSaldo.Text = ". . .";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(51, 214);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 26);
+            this.label4.Size = new System.Drawing.Size(141, 32);
             this.label4.TabIndex = 10;
             this.label4.Text = "Saldo Atual:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 25);
@@ -149,7 +168,9 @@ namespace ExemploBanco
             // lblMeuId
             // 
             this.lblMeuId.AutoSize = true;
+            this.lblMeuId.BackColor = System.Drawing.Color.Transparent;
             this.lblMeuId.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMeuId.ForeColor = System.Drawing.Color.White;
             this.lblMeuId.Location = new System.Drawing.Point(86, 9);
             this.lblMeuId.Name = "lblMeuId";
             this.lblMeuId.Size = new System.Drawing.Size(51, 25);
@@ -159,28 +180,31 @@ namespace ExemploBanco
             // btnSairMesmo
             // 
             this.btnSairMesmo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSairMesmo.BackColor = System.Drawing.Color.Transparent;
             this.btnSairMesmo.Image = global::ExemploBanco.Properties.Resources.icons8_desligar_501;
             this.btnSairMesmo.Location = new System.Drawing.Point(1026, 557);
             this.btnSairMesmo.Name = "btnSairMesmo";
             this.btnSairMesmo.Size = new System.Drawing.Size(55, 62);
             this.btnSairMesmo.TabIndex = 4;
-            this.btnSairMesmo.UseVisualStyleBackColor = true;
+            this.btnSairMesmo.UseVisualStyleBackColor = false;
             this.btnSairMesmo.Click += new System.EventHandler(this.btnSairMesmo_Click);
             // 
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.BackColor = System.Drawing.Color.Transparent;
             this.btnSair.Image = global::ExemploBanco.Properties.Resources.icons8_saída_de_emergência_50;
             this.btnSair.Location = new System.Drawing.Point(965, 557);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(55, 62);
             this.btnSair.TabIndex = 3;
-            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // pcb3
             // 
             this.pcb3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pcb3.BackColor = System.Drawing.Color.Transparent;
             this.pcb3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pcb3.Image = global::ExemploBanco.Properties.Resources.icons8_iniciar_transferência_de_dinheiro_100;
             this.pcb3.Location = new System.Drawing.Point(850, 343);
@@ -196,6 +220,7 @@ namespace ExemploBanco
             // pcb2
             // 
             this.pcb2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pcb2.BackColor = System.Drawing.Color.Transparent;
             this.pcb2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pcb2.Image = global::ExemploBanco.Properties.Resources.icons8_depósito_100;
             this.pcb2.Location = new System.Drawing.Point(470, 343);
@@ -211,6 +236,7 @@ namespace ExemploBanco
             // pcb1
             // 
             this.pcb1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pcb1.BackColor = System.Drawing.Color.Transparent;
             this.pcb1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pcb1.Image = global::ExemploBanco.Properties.Resources.icons8_limite_de_saque_100;
             this.pcb1.Location = new System.Drawing.Point(86, 343);
@@ -226,19 +252,22 @@ namespace ExemploBanco
             // btnExtrato
             // 
             this.btnExtrato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExtrato.BackColor = System.Drawing.Color.Transparent;
             this.btnExtrato.Font = new System.Drawing.Font("Palatino Linotype", 14.25F);
             this.btnExtrato.Location = new System.Drawing.Point(56, 568);
             this.btnExtrato.Name = "btnExtrato";
             this.btnExtrato.Size = new System.Drawing.Size(163, 36);
             this.btnExtrato.TabIndex = 12;
             this.btnExtrato.Text = "Verificar Extrato";
-            this.btnExtrato.UseVisualStyleBackColor = true;
+            this.btnExtrato.UseVisualStyleBackColor = false;
             this.btnExtrato.Click += new System.EventHandler(this.btnExtrato_Click);
             // 
             // I_MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ExemploBanco.Properties.Resources._1385387;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1093, 629);
             this.Controls.Add(this.btnExtrato);
             this.Controls.Add(this.btnSairMesmo);
@@ -256,6 +285,9 @@ namespace ExemploBanco
             this.Controls.Add(this.pcb3);
             this.Controls.Add(this.pcb2);
             this.Controls.Add(this.pcb1);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "I_MenuPrincipal";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

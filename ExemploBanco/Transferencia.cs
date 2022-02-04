@@ -58,12 +58,23 @@ namespace ExemploBanco
 
             #region Debitando
 
+            if (txtIdOutraConta.Text == string.Empty)
+            {
+                MessageBox.Show("Destinatário não informado!");
+                return;
+            }
+
+            bool ExisteId = op.MostrarId(int.Parse(txtIdOutraConta.Text.Trim()));
             op.id_conta = dadosLogin.id_login;
             double.TryParse(txtTransferencia.Text.Trim(), out double saldo);
             op.valor = saldo;
+            string pessoa = op.MostrarNome(dadosLogin.id_login);
             op.tipo = "D";
-            op.desc = "Transferência";
-
+            if(op.tipo == "D") 
+            { 
+                op.desc = "Transferência de R$" + saldo + " para " + lblPessoaDeDestino.Text ;
+            }
+            
             if (txtIdOutraConta.Text == string.Empty && txtTransferencia.Text == string.Empty)
             {
                 MessageBox.Show("Campos Obrigatórios!");
@@ -74,19 +85,17 @@ namespace ExemploBanco
             {
                 MessageBox.Show("Valor Inválido!");
                 txtTransferencia.Text = txtTransferencia.Text.Remove(txtTransferencia.Text.Length - 1);
-                txtTransferencia.Text = string.Empty;
+            }
+
+            if (ExisteId == false)
+            {                
+                MessageBox.Show("Remetente não existe!");
                 return;
             }
 
             if (op.valor < 1)
             {
                 MessageBox.Show("Valor Inválido!");
-                return;
-            }
-
-            if (txtIdOutraConta.Text == string.Empty)
-            {
-                MessageBox.Show("Destinatário não informado!");
                 return;
             }
 
@@ -126,6 +135,10 @@ namespace ExemploBanco
             op.desc = "Transferência";
 
             //op.id_dest = int.Parse(txtIdOutraConta.Text);
+            if (op.tipo == "C")
+            {
+                op.desc = "Transferência de R$" + saldo + "  recebida de " + pessoa;
+            }
 
             if (op.valor <= double.Parse(lblSaldo.Text))
             {
@@ -167,7 +180,6 @@ namespace ExemploBanco
 
         private void txtIdOutraConta_TextChanged(object sender, EventArgs e)
         {
-            //////////////////////////////////////////////////
             
             if (txtIdOutraConta.Text == string.Empty)
             {
@@ -194,9 +206,7 @@ namespace ExemploBanco
             }
 
             lblPessoaDeDestino.Text = Convert.ToString(op.MostrarNome(id));
-            //lblPessoaDeDestino.Text = op.nome;
 
-            ///////////////////////////////////////////////
         }
 
         private void btnPesquisa_Click(object sender, EventArgs e)

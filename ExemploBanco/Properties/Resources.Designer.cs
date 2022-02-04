@@ -63,6 +63,16 @@ namespace ExemploBanco.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1385387 {
+            get {
+                object obj = ResourceManager.GetObject("1385387", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap artworks_rRbG6b49294TaJj1_5jegxw_t500x500 {
             get {
                 object obj = ResourceManager.GetObject("artworks-rRbG6b49294TaJj1-5jegxw-t500x500", resourceCulture);
@@ -196,6 +206,26 @@ namespace ExemploBanco.Properties {
         internal static System.Drawing.Bitmap saque {
             get {
                 object obj = ResourceManager.GetObject("saque", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thumb_1920_760463 {
+            get {
+                object obj = ResourceManager.GetObject("thumb-1920-760463", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wp2987867 {
+            get {
+                object obj = ResourceManager.GetObject("wp2987867", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

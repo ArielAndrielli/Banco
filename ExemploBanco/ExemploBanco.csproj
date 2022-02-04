@@ -251,5 +251,14 @@
   <ItemGroup>
     <None Include="Resources\icons8-search-64 %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wp2987867.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumb-1920-760463.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1385387.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

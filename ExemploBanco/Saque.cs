@@ -69,7 +69,7 @@ namespace ExemploBanco
             }
 
 
-            if (op.valor < 0 || op.valor > double.Parse(lblSaldo.Text))
+            if (op.valor < 1 || op.valor > double.Parse(lblSaldo.Text))
             {
                 MessageBox.Show("Saldo Insuficiente!");
                 return;

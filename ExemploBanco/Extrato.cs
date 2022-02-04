@@ -37,6 +37,20 @@ namespace ExemploBanco
             DataTable result = op.ListarExtrato(dadosLogin.id_login);
 
             dgv_ExtratoLegal.DataSource = result;
+
+            dgv_ExtratoLegal.Columns["valor"].DefaultCellStyle.Format = "C2";
+            dgv_ExtratoLegal.Columns["valor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgv_ExtratoLegal.Columns["data_mov"].HeaderText = "Data";
+            dgv_ExtratoLegal.Columns["data_mov"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgv_ExtratoLegal.Columns["data_mov"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgv_ExtratoLegal.Columns["descricao"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgv_ExtratoLegal.Columns["id"].Visible = false;
+            dgv_ExtratoLegal.Columns["id_conta"].Visible = false;
+            dgv_ExtratoLegal.Columns["nome"].Visible = false;
+            dgv_ExtratoLegal.Columns["aux_valor"].Visible = false;
         }
 
         #endregion

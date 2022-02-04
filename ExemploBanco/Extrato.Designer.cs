@@ -29,6 +29,7 @@ namespace ExemploBanco
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Extrato));
             this.dgv_ExtratoLegal = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ExtratoLegal)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +50,7 @@ namespace ExemploBanco
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 211);
             this.Controls.Add(this.dgv_ExtratoLegal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Extrato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
