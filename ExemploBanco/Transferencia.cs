@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace ExemploBanco
 {
@@ -55,7 +56,6 @@ namespace ExemploBanco
 
         private void btnTransferir_Click(object sender, EventArgs e)
         {
-
             #region Debitando
 
             if (txtIdOutraConta.Text == string.Empty)
